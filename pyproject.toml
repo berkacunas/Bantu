@@ -19,7 +19,7 @@ dependencies = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/ebimsv/mlpredictor"
+"Homepage" = "https://github.com/berkacunas/Bantu"
 
 [tool.setuptools.packages.find]
 where = ["."]
