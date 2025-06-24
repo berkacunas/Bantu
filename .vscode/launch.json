@@ -15,7 +15,15 @@
             "type": "debugpy",
             "request": "launch",
             "program": "${file}",
-            "args": ["-db-type1", "sqlite", "-db-type2", "mssql", "-mt", "-mssql-server-name", "PC-WINDOWS10", "-mssql-database-name", "BankFundsTest", "-sqlite-path", "C:\\berk\\Documents\\Databases\\BankFunds\\sqlite\\BankFunds5.db", "-schema-clone", "-data-clone"]
+            "args": ["-db-type1", "<sqlite>", 
+                     "-db-type2", "<mssql>", 
+                     "-mt", 
+                     "-mssql-server-name", "<mssql-server-name>", 
+                     "-mssql-database-name", "<mssql-database-name>", 
+                     "-sqlite-path", "<sqlite-path>", 
+                     "-schema-clone", 
+                     "-data-clone"
+                    ]
         }
     ]
 }
