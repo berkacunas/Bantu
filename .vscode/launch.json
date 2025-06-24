@@ -1,0 +1,21 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python Debugger: Module",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "Bantu"
+        },
+        {
+            "name": "Python Debugger: Python File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "args": ["-db-type1", "sqlite", "-db-type2", "mssql", "-mt", "-mssql-server-name", "PC-WINDOWS10", "-mssql-database-name", "BankFundsTest", "-sqlite-path", "C:\\berk\\Documents\\Databases\\BankFunds\\sqlite\\BankFunds5.db", "-schema-clone", "-data-clone"]
+        }
+    ]
+}

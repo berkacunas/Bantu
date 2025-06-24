@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "Bantu"
+version = "0.1.0"
+description = "A command-line bidirectional sql schema/data migration tool between SQLite and SQL Server"
+authors = [
+    {name = "Lambert", email = "publiclambert@gmail.com"}
+]
+license = {text = "Apache"}
+readme = "README.md"
+requires-python = ">=3.6"
+dependencies = [
+    "pymssql>=2.3.4",
+    "julian>=0.14",
+    "python-dateutil>=2.9.0"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/ebimsv/mlpredictor"
+
+[tool.setuptools.packages.find]
+where = ["."]
