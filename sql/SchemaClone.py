@@ -9,15 +9,26 @@ from sql.sqlserver import schemaimpl as sqlserver_schema
 
 class SchemaClone:
     
-    @staticmethod
-    def sqlserver_to_sqlite(sqlserver_name, sqlserver_database, sqlite_path):
+    # mssql_trusted: bool = True, : str = None, mssql_database_name: str = None, mssql_username: str = None, mssql_password: str = None,
     
-        conn_src = sqlserver_connection.get_trusted_connection(sqlserver_name, sqlserver_database)
-        conn_dest = sqlite_connection.get_connection(sqlite_path)
+    @staticmethod
+    def sqlserver_to_sqlite(*, sqlserver_name: str = None, sqlserver_database: str = None, 
+                            sqlserver_username: str = None, sqlserver_password: str = None, 
+                            mssql_trusted: bool = True, 
+                            sqlite_path: str = None):
+    
+        conn_src = None
+        
+        if mssql_trusted:
+            conn_src = sqlserver_connection.get_trusted_connection(sqlserver_name, sqlserver_database)
+        else:
+            conn_src = sqlserver_connection.get_connection(sqlserver_name, sqlserver_username, sqlserver_password, sqlserver_database)
         
         if not conn_src:
             print(f'Cannot connect into server: {sqlserver_name}, database{sqlserver_database}')
             return
+        
+        conn_dest = sqlite_connection.get_connection(sqlite_path)
         
         tables = sqlserver_schema.get_tables(conn_src)
         

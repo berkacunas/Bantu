@@ -4,15 +4,18 @@ from sql.SchemaClone import SchemaClone
 from sql.DataClone import DataClone
     
 
-def execute(source_db_type: str, dest_db_type: str, mssql_server_name: str, mssql_database_name: str, sqlite_path: str, 
-            mssql_trusted: bool, schema_clone: bool, data_clone: bool):
+def execute(source_db_type: str, dest_db_type: str, 
+            mssql_trusted: bool = True, mssql_server_name: str = None, mssql_database_name: str = None, mssql_username: str = None, mssql_password: str = None,
+            sqlite_path: str = None, schema_clone: bool = True, data_clone: bool = False):
     
     if not mssql_trusted:
         raise NotImplementedError("SQL-Server connection without trusted-connection is not implemented yet.")
         
     if source_db_type == "mssql" and dest_db_type == "sqlite":
         if schema_clone:
-            SchemaClone.sqlserver_to_sqlite(mssql_server_name, mssql_database_name, sqlite_path)
+            SchemaClone.sqlserver_to_sqlite(sqlserver_name=mssql_server_name, sqlserver_database=mssql_database_name, 
+                                            sqlserver_username=mssql_username, sqlserver_password=mssql_password, 
+                                            sqlite_path=sqlite_path, mssql_trusted=False)
         if data_clone:
             DataClone.sqlserver_to_sqlite(mssql_server_name, mssql_database_name, sqlite_path)
         
@@ -42,6 +45,9 @@ def main():
     optional_args_parser.add_argument("-mt", "--mssql-trusted", dest="mssql_trusted", action="store_true", default=False, help="Connect MSSQL with trusted connection")
     optional_args_parser.add_argument("-mssql-server-name", type=str, help="SQL Server name for connection")
     optional_args_parser.add_argument("-mssql-database-name", type=str, help="SQL Server database name for migration")
+    optional_args_parser.add_argument("-mssql-username", type=str, help="SQL Server database username for login")
+    optional_args_parser.add_argument("-mssql-password", type=str, help="SQL Server database password for login")
+    
     optional_args_parser.add_argument("-sqlite-path", type=str, help="SQLite Database File")
     
     optional_args_parser.add_argument("-schema-clone", action="store_true", default=False, help="Clone schema")
@@ -49,7 +55,16 @@ def main():
     
     try:
         args = parser.parse_args()
-        execute(args.db_type1, args.db_type2, args.mssql_server_name, args.mssql_database_name, args.sqlite_path, args.mssql_trusted, args.schema_clone, args.data_clone)
+        execute(source_db_type=args.db_type1, 
+                dest_db_type=args.db_type2, 
+                mssql_server_name=args.mssql_server_name, 
+                mssql_database_name=args.mssql_database_name, 
+                mssql_username=args.mssql_username,
+                mssql_password=args.mssql_password,
+                sqlite_path=args.sqlite_path, 
+                #mssql_trusted=args.mssql_trusted, 
+                schema_clone=args.schema_clone, 
+                data_clone=args.data_clone)
         
     except Exception as error:
         print(f"ArgParse Error | {error}")
