@@ -18,11 +18,11 @@
             "args": ["-db-type1", "mssql", 
                      "-db-type2", "sqlite", 
                      "-mt", 
-                     "-mssql-server-name", "PC-WINDOWS10", 
-                     "-mssql-database-name", "BankFunds", 
-                     "-mssql-username", "sa",
+                     "-mssql-server-name", "server-name", 
+                     "-mssql-database-name", "<db-name>", 
+                     "-mssql-username", "<username>",
                      "-mssql-password", "<password>",
-                     "-sqlite-path", "C:\\berk\\Documents\\Databases\\BankFunds\\sqlite\\BankFunds10.db", 
+                     "-sqlite-path", "<sqlite-path>", 
                      "-schema-clone", 
                      "-data-clone"
                     ]
