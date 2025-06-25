@@ -21,7 +21,7 @@
                      "-mssql-server-name", "PC-WINDOWS10", 
                      "-mssql-database-name", "BankFunds", 
                      "-mssql-username", "sa",
-                     "-mssql-password", "bama5478{_}",
+                     "-mssql-password", "<password>",
                      "-sqlite-path", "C:\\berk\\Documents\\Databases\\BankFunds\\sqlite\\BankFunds10.db", 
                      "-schema-clone", 
                      "-data-clone"
