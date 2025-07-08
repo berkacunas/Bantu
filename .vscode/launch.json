@@ -19,7 +19,7 @@
                      "-db-type2", "mssql", 
                      "-mt", 
                      "-mssql-server-name", "PC-WINDOWS10", 
-                     "-mssql-database-name", "BankFund", 
+                     "-mssql-database-name", "BankFunds", 
                      "-sqlite-path", "C:\\berk\\Documents\\Databases\\BankFunds\\sqlite\\BankFunds.db", 
                      "-data-clone"
                     ]

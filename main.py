@@ -62,7 +62,7 @@ def main():
                 mssql_username=args.mssql_username,
                 mssql_password=args.mssql_password,
                 sqlite_path=args.sqlite_path, 
-                #mssql_trusted=args.mssql_trusted, 
+                mssql_trusted=args.mssql_trusted,
                 schema_clone=args.schema_clone, 
                 data_clone=args.data_clone)
         
