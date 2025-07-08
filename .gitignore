@@ -181,3 +181,5 @@ cython_debug/
 .cursorindexingignore
 
 .vscode/launch.json
+output*/
+assets/app-icon.png

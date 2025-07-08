@@ -1,3 +1,4 @@
 pymssql
+sqlite3
 python-dateutil
 julian
